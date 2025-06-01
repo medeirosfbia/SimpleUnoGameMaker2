@@ -1,5 +1,4 @@
 
-
 if(position_meeting(mouse_x, mouse_y, self)) {
 	image_xscale = 2.5
 	image_yscale = 2.5
@@ -16,6 +15,7 @@ if(position_meeting(mouse_x, mouse_y, self)
 	if(sprite_index == spr_button && (image_index == 0 || image_index == 1)) {
 		if (image_index == 0) {
 			playCard()
+			
 		}
 		
 		selected_card[0] = noone
@@ -33,14 +33,29 @@ if(position_meeting(mouse_x, mouse_y, self)
 	//show_debug_message(selected_card)
 }
 
+
+
+
+var cards_on_tab = obj_controller.cards_on_tab
+var tab = obj_controller.tab
+var player_cards = obj_controller.player_cards
+
+if (sprite_index == spr_tab) {
+	if (goto_next == 1 && array_length(cards_on_tab)-1 > tab) {
+		visible = 1
+	}
+	else if (goto_next == 0 && tab != 0) {
+		visible = 1
+	}
+	else {
+		visible = 0
+	}
+}
+
+
 if (position_meeting(mouse_x, mouse_y, self)
 && mouse_check_button_released(mb_left)) {
 	if (sprite_index == spr_tab) {
-		var cards_on_tab = obj_controller.cards_on_tab
-		var tab = obj_controller.tab
-		var player_cards = obj_controller.player_cards
-		
-		
 		
 		if (goto_next == 1 && array_length(cards_on_tab)-1 > tab) {
 			obj_controller.tab++
@@ -48,11 +63,12 @@ if (position_meeting(mouse_x, mouse_y, self)
 		else if (goto_next == 0 && tab != 0) {
 			obj_controller.tab--
 		}
-		show_debug_message(tab)
+		//show_debug_message(tab)
 		
 		for (var i = 0; i < obj_controller.n_player_cards; i++) {
 			var card = player_cards[i][0]
 			card.x = 0
+			showCards()
 		}
 		reloadXSpacing()
 	}

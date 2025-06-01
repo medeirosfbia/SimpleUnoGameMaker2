@@ -10,6 +10,7 @@ if (position_meeting(mouse_x, mouse_y, self)) {
 		var cards_on_tab = obj_controller.cards_on_tab
 		if (cards_on_tab[array_length(cards_on_tab)-1] == 7) {
 			array_push(cards_on_tab, 0)
+			obj_controller.tab = array_length(cards_on_tab)-1
 			createTabs()
 		}
 		getCards(1, "player")	

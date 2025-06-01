@@ -23,9 +23,19 @@ function playCard(){
 				
 			}
 			
+			
+			
 			array_delete(player_cards, i, 1)
 			instance_destroy(selected_card[0])
 			
+			var center_card = obj_controller.center_card
+			center_card[1] = selected_card[1]
+			center_card[2] = selected_card[2]
+			center_card[3] = selected_card[3]
+			
+			obj_controller.player_turn = 0
+			
+			obj_controller.alarm[0] = 30 * 8
 			reloadXSpacing()
 		}
 	}
