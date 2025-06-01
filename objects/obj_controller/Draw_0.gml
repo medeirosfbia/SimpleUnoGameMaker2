@@ -1,0 +1,3 @@
+//draw_line_width(room_width/2,0,room_width/2,room_height, 3)
+
+//draw_sprite()
